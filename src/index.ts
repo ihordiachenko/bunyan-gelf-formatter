@@ -36,8 +36,18 @@ export class GelfFormatStream extends stream.Transform {
     _encoding: BufferEncoding,
     callback: stream.TransformCallback
   ): void {
-    const gelfObject = this._bunyanToGelf(chunk);
-    callback(null, this._raw ? gelfObject : JSON.stringify(gelfObject) + '\n');
+    try {
+      const gelfObject = this._bunyanToGelf(chunk);
+
+      if (this._raw) {
+        callback(null, gelfObject);
+      } else {
+        const serialized = JSON.stringify(gelfObject) + '\n';
+        callback(null, serialized);
+      }
+    } catch (err) {
+      callback(err);
+    }
   }
 
   _bunyanToGelf(bunyanMessage: any) {
