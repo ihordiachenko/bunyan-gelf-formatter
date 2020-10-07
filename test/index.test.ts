@@ -80,6 +80,7 @@ describe('bunyan-gelf-formatter', () => {
 
     beforeEach(() => {
       mockDate.set(NOW);
+      Object.defineProperty(process, 'pid', { get: () => 1 });
 
       stream = new GelfFormatStream({});
       const outStream = new ObjectWritableMock();
@@ -92,12 +93,15 @@ describe('bunyan-gelf-formatter', () => {
         streams: [{ type: 'raw', stream }],
       });
 
-      logger.error({ err: ERROR }, LOG_MESSAGE);
+      logger.info(LOG_MESSAGE);
       logLine = outStream.data[0];
     });
 
     it('should match stringified json', () => {
-      expect(logLine).toMatchSnapshot('stringified');
+      expect(logLine).toMatchInlineSnapshot(`
+        "{\\"version\\":\\"1.1\\",\\"host\\":\\"jest-host\\",\\"timestamp\\":1581638400,\\"short_message\\":\\"oh my!\\",\\"level\\":6,\\"facility\\":\\"test-logger\\",\\"pid\\":1}
+        "
+      `);
     });
   });
 });
