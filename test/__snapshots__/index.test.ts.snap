@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bunyan-gelf-formatter normal mode should write stringified json: stringified 1`] = `
+"{\\"version\\":\\"1.1\\",\\"host\\":\\"jest-host\\",\\"timestamp\\":1581638400,\\"short_message\\":\\"oh my!\\",\\"level\\":3,\\"facility\\":\\"test-logger\\",\\"pid\\":18768,\\"full_message\\":\\"Error: The roof is on fire\\\\n    at Object.<anonymous> (/Users/user/repos/bunyan-gelf-formatter/test/index.test.ts:8:15)\\\\n    at Runtime._execModule (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-runtime/build/index.js:1205:24)\\\\n    at Runtime._loadModule (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-runtime/build/index.js:805:12)\\\\n    at Runtime.requireModule (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-runtime/build/index.js:662:10)\\\\n    at jasmine2 (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-jasmine2/build/index.js:228:13)\\\\n    at runTestInternal (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-runner/build/runTest.js:385:22)\\\\n    at runTest (/Users/user/repos/bunyan-gelf-formatter/node_modules/jest-runner/build/runTest.js:465:34)\\",\\"file\\":\\"/Users/user/repos/bunyan-gelf-formatter/test/index.test.ts\\",\\"line\\":8}
+"
+`;

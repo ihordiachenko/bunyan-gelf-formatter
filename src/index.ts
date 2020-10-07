@@ -1,10 +1,10 @@
 import stream from 'stream';
 import Logger from 'bunyan';
 import flatten from 'flat';
-
 import { SYSLOG_LEVELS } from './constants';
 
-const GELF_VERSION = '1.1';
+export const GELF_VERSION = '1.1';
+export { SYSLOG_LEVELS } from './constants';
 
 const BUNYAN_TO_SYSYLOG_LEVELS = new Map([
   [Logger.FATAL, SYSLOG_LEVELS.CRITICAL],
@@ -23,7 +23,7 @@ const BUNYAN_TO_SYSYLOG_LEVELS = new Map([
 export class GelfFormatStream extends stream.Transform {
   private _raw: boolean;
 
-  constructor(options: stream.TransformOptions, raw: boolean) {
+  constructor(options: stream.TransformOptions, raw: boolean = false) {
     options.readableObjectMode = true;
     options.writableObjectMode = true;
     super(options);
@@ -54,7 +54,7 @@ export class GelfFormatStream extends stream.Transform {
     const gelfMessage: any = {
       version: GELF_VERSION,
       host: bunyanMessage.hostname,
-      timestamp: Number(new Date(bunyanMessage.time)) / 1000,
+      timestamp: Math.floor(Number(new Date(bunyanMessage.time)) / 1000),
       short_message: bunyanMessage.msg,
       level: this._convertLevel(bunyanMessage.level),
       facility: bunyanMessage.name,

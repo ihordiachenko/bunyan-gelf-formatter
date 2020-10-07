@@ -2,7 +2,7 @@
 
 TODO:
 
-- [] unit tests;
+- [X] unit tests;
 - [] docs;
 - [] CI;
 - [] publish v1 to npm;
