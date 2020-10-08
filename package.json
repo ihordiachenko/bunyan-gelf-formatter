@@ -58,6 +58,7 @@
     "typescript": "^4.0.3"
   },
   "dependencies": {
+    "error-stack-parser": "^2.0.6",
     "flat": "^5.0.2"
   }
 }

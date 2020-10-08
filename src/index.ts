@@ -1,6 +1,7 @@
 import stream from 'stream';
 import Logger from 'bunyan';
 import flatten from 'flat';
+import ErrorStackParser from 'error-stack-parser';
 import { SYSLOG_LEVELS } from './constants';
 
 export const GELF_VERSION = '1.1';
@@ -71,16 +72,14 @@ export class GelfFormatStream extends stream.Transform {
 
     if (bunyanMessage.err && bunyanMessage.err.stack) {
       gelfMessage.full_message = bunyanMessage.err.stack;
-      const matches: Iterable<any> = bunyanMessage.err.stack.matchAll(
-        /\n\s+at .+ \((?<file>[^:]+):(?<line>\d+)/g
-      );
-      const { file, line } = Array.from(matches)[0].groups;
+      const err = bunyanMessage.err;
+      const { fileName, lineNumber } = ErrorStackParser.parse(err)[0];
 
-      if (file) {
-        gelfMessage.file = file;
+      if (fileName) {
+        gelfMessage.file = fileName;
       }
-      if (line) {
-        gelfMessage.line = Number(line);
+      if (lineNumber) {
+        gelfMessage.line = Number(lineNumber);
       }
     }
 
