@@ -71,11 +71,10 @@ export class GelfFormatStream extends stream.Transform {
 
     if (bunyanMessage.err && bunyanMessage.err.stack) {
       gelfMessage.full_message = bunyanMessage.err.stack;
-
-      const match = bunyanMessage.err.stack.match(
-        /\n\s+at .+ \((?<file>[^:]+):(?<line>\d+)/
+      const matches: Iterable<any> = bunyanMessage.err.stack.matchAll(
+        /\n\s+at .+ \((?<file>[^:]+):(?<line>\d+)/g
       );
-      const { file, line } = match.groups;
+      const { file, line } = Array.from(matches)[0].groups;
 
       if (file) {
         gelfMessage.file = file;
