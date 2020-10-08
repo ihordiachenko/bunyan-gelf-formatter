@@ -62,7 +62,10 @@ describe('bunyan-gelf-formatter', () => {
     });
 
     it('should parse file and line from an error', () => {
-      expect(gelfObject).toHaveProperty('file', __filename);
+      expect(gelfObject).toHaveProperty(
+        'file',
+        expect.stringContaining(__filename)
+      );
       expect(gelfObject).toHaveProperty('line', 8);
     });
 
