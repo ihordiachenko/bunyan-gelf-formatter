@@ -62,9 +62,11 @@ describe('bunyan-gelf-formatter', () => {
     });
 
     it('should parse file and line from an error', () => {
+      const pathSegments = __filename.split(/(\/|\\)/);
+      const fileName = pathSegments[pathSegments.length - 1];
       expect(gelfObject).toHaveProperty(
         'file',
-        expect.stringContaining(__filename)
+        expect.stringContaining(fileName)
       );
       expect(gelfObject).toHaveProperty('line', 8);
     });
