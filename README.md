@@ -3,8 +3,8 @@
 TODO:
 
 - [X] unit tests;
+- [X] CI;
 - [ ] docs;
-- [ ] CI;
 - [ ] publish v1 to npm;
 
 ## Commands
