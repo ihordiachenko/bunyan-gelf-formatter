@@ -1,11 +1,13 @@
 {
+  "name": "bunyan-gelf-formatter",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "LICENSE",
+    "README.md"
   ],
   "engines": {
     "node": ">=10"
@@ -31,8 +33,19 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "bunyan-gelf-formatter",
   "author": "Ihor Diachenko",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ihordiachenko/bunyan-gelf-formatter.git"
+  },
+  "keywords": [
+    "logs",
+    "GELF",
+    "graylog",
+    "fluentd",
+    "fluentbit",
+    "bunyan"
+  ],
   "module": "dist/bunyan-gelf-formatter.esm.js",
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
