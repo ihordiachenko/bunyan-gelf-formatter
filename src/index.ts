@@ -24,7 +24,7 @@ const BUNYAN_TO_SYSYLOG_LEVELS = new Map([
 export class GelfStream extends stream.Transform {
   private _raw: boolean;
 
-  constructor(options: stream.TransformOptions, raw: boolean = false) {
+  constructor(options: stream.TransformOptions = {}, raw: boolean = false) {
     options.readableObjectMode = true;
     options.writableObjectMode = true;
     super(options);
