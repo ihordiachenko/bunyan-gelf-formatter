@@ -11,7 +11,7 @@ Raw bunyan logs cannot be processed by Fluentd GELF plugin due to incompatible `
 ## Installation
 
 ```sh
-npm i -S bunyan-pretty-stream
+npm i -S bunyan-gelf-formatter
 ```
 
 ## Usage
