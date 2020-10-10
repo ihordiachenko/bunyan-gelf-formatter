@@ -34,16 +34,6 @@
   "name": "bunyan-gelf-formatter",
   "author": "Ihor Diachenko",
   "module": "dist/bunyan-gelf-formatter.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/bunyan-gelf-formatter.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/bunyan-gelf-formatter.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
     "@types/flat": "^5.0.1",
