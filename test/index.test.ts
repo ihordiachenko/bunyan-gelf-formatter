@@ -1,4 +1,4 @@
-import { GelfFormatStream, SYSLOG_LEVELS, GELF_VERSION } from '../src';
+import { GelfStream, SYSLOG_LEVELS, GELF_VERSION } from '../src';
 import { ObjectWritableMock } from 'stream-mock';
 import mockDate from 'mockdate';
 import bunyan from 'bunyan';
@@ -10,7 +10,7 @@ const LOG_MESSAGE = 'oh my!';
 const NOW = Date.parse('2020-02-14');
 
 describe('bunyan-gelf-formatter', () => {
-  let stream: GelfFormatStream;
+  let stream: GelfStream;
   let logger: bunyan;
 
   describe('object mode(raw)', () => {
@@ -19,7 +19,7 @@ describe('bunyan-gelf-formatter', () => {
     beforeEach(() => {
       mockDate.set(NOW);
 
-      stream = new GelfFormatStream({}, true);
+      stream = new GelfStream({}, true);
       const outStream = new ObjectWritableMock();
       stream.pipe(outStream);
 
@@ -87,7 +87,7 @@ describe('bunyan-gelf-formatter', () => {
       mockDate.set(NOW);
       Object.defineProperty(process, 'pid', { get: () => 1 });
 
-      stream = new GelfFormatStream({});
+      stream = new GelfStream({});
       const outStream = new ObjectWritableMock();
       stream.pipe(outStream);
 

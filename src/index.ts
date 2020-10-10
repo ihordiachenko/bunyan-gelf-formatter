@@ -21,7 +21,7 @@ const BUNYAN_TO_SYSYLOG_LEVELS = new Map([
  *
  * @link https://docs.graylog.org/en/3.2/pages/gelf.html?highlight=levels#gelf-payload-specification
  */
-export class GelfFormatStream extends stream.Transform {
+export class GelfStream extends stream.Transform {
   private _raw: boolean;
 
   constructor(options: stream.TransformOptions, raw: boolean = false) {
