@@ -22,9 +22,11 @@ Add it as a [bunyan stream](https://github.com/trentm/node-bunyan#streams):
 const bunyan = require('bunyan')
 const { GelfStream } = require('bunyan-gelf-formatter')
 
+const gelfStream = new GelfStream({})
+gelfStream.pipe(process.stdout)
 
 const logger = bunyan.createLogger({
     name: 'logger',
-    streams: [new GelfStream()]
+    streams: [{ type: 'raw', stream: gelfStream }]
 })
 ```
