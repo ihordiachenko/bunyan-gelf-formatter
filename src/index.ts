@@ -1,6 +1,6 @@
 import stream from 'stream';
 import Logger from 'bunyan';
-import flatten from 'flat';
+import { flatten } from 'safe-flat';
 import ErrorStackParser from 'error-stack-parser';
 import { SYSLOG_LEVELS } from './constants';
 

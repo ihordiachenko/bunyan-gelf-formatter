@@ -60,6 +60,6 @@
   },
   "dependencies": {
     "error-stack-parser": "^2.0.6",
-    "flat": "^5.0.2"
+    "safe-flat": "^2.0.0"
   }
 }
