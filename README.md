@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/bunyan-gelf-formatter.svg)](https://www.npmjs.com/package/bunyan-gelf-formatter)
 
-Converts [buynayn](https://github.com/trentm/node-bunyan) logs to [GELF](https://docs.graylog.org/en/3.2/pages/gelf.html)-compatible format.
+Converts [bunyan](https://github.com/trentm/node-bunyan) logs to [GELF](https://docs.graylog.org/docs/gelf)-compatible format.
 
-Unlike other similar packages, `bunyan-gelf-formatter` doesn't send logs to Gaylog on its own, so it's ideal for usage with centralized log processors like Fluentd.
+Unlike other similar packages, `bunyan-gelf-formatter` doesn't send logs to Graylog on its own, so it's ideal for usage with centralized log processors like Fluentd.
 
 Raw bunyan logs cannot be processed by Fluentd GELF plugin due to incompatible `level` field. This package takes care of properly formatting the log level as well as other default GELF fields and flattening the JSON payloads.
 
